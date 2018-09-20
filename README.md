@@ -1,2 +1,2 @@
 # Sudoku
-Sud
+Sudoku game using backtracking algorithm
