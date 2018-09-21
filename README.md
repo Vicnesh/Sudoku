@@ -1,6 +1,7 @@
 # Sudoku Game
-Sudoku game using backtracking algorithm
-------------------------------------------------------------------------------------------------------------------------------------------
+
+Sudoku Game has a 9x9 grid where each cell can only contain a value within the range of 1-9. For each cell there are 3 rules/constraints further explained below. This is attempt to practice programming skills mainly algorithm design, problem solving and basic GUI design for the grid cells.
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 For each cell in the grid, there are constraints to be followed:
 
