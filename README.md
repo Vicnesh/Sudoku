@@ -13,11 +13,14 @@ For each cell in the grid, there are constraints to be followed:
 
 ToDo:
 1) Generate a valid puzzle that abides the constraints above
+2) Research possible solutions after the ones below have been implemented.
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------
+The solutions proposed below are just an attempt at brainstorming. As of the moment no resources have been used to figure out the problem.
+Possible solutions will be researched and implemented after the attempt to implement the solutions below have been exhausted.
 
-Algorithm:
+Algorithms/Solutions:
 
 Solution 1:
 For each cell in the 9x9 grid, the possible range of value is 1-9.
