@@ -1,78 +1,65 @@
 package com.vicnesh.sudoku;
 
+
+/* Sudoku Backtracking Algorithm
+ * This algorithm is used to generate a solved puzzle.
+ * Access each cell and checks if it is empty. If cell is empty, set a value to cell in a sequential order 1-9.
+ * Check if the value to set in cell complies to the constraints, if it doesnt, backtrack and retry.
+ * 
+ * 
+ * 
+ */
+
+
 public class SudokuBackTracking {
 	
 	SudokuPuzzle sudokuPuzzle = new SudokuPuzzle();
 	
 	
-	//constructor
+	/*
+	 * Constructor
+	 * @parameter
+	 * @return
+	 */
 	public SudokuBackTracking() {
 		this.solveSudokuBoard();
 	}
 	
 	
-	//getter
+	/*
+	 * Get sudoku puzzle array
+	 * Calls method from SudokuPuzzle
+	 * @parameter
+	 * @return - array of sudoku puzzle
+	 */
 	public int[][] getSudokuPuzzle() {
 		return sudokuPuzzle.getSudokuPuzzle();
 	}
 	
 	
-	//check if in row
-	private boolean checkIfValueExistInRow(int row, int col, int value) {
-		for (int i = 0; i < 9; i++) {
-			if (sudokuPuzzle.getSudokuPuzzleRowCol(row, i) == value) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	
-	//check if in column
-	private boolean checkIfValueExistInCol(int row, int col, int value) {
-		for (int i = 0; i < 9; i++) {
-			if (sudokuPuzzle.getSudokuPuzzleRowCol(i, col) == value) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	
-	//check if in 3x3 box of grid
-	private boolean checkIfValueExistIn3x3Grid(int row, int col, int value) {
-		int r = row - row % 3;
-		int c = col - col % 3;
-		
-		for (int i = r; i < r + 3; i++) {
-			for (int j = c; j < c + 3; j++) {
-				if (sudokuPuzzle.getSudokuPuzzleRowCol(i, j) == value) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
-	
-	//all constraints to be checked
+	/*
+	 * Check constraints
+	 * Calls method from SudokuPuzzle
+	 * @parameter - int row, int column of grid puzzle, int value to check for contraints
+	 * @return - boolean, true if value exist in any constraint, false if value does not exist in any constraint
+	 */
 	private boolean checkConstraints(int row, int col, int value) {
-		return !this.checkIfValueExistInRow(row, col, value) && !this.checkIfValueExistInCol(row, col, value)
-				&& !this.checkIfValueExistIn3x3Grid(row, col, value);
+		return sudokuPuzzle.checkConstraints(row, col, value);
 	}
+
 	
 	
-	/*backtracking algorithm
-	 * 
-	 * 
-	 * 
+	/*
+	 * Backtracking Algorithm used to generate a solved sudoku board.
+	 * @parameter - 
+	 * @return - 
 	 */
 	public boolean solveSudokuBoard() {
 		for (int row = 0; row < 9; row++) {
 			for (int col = 0; col < 9; col++) {
-				if (sudokuPuzzle.checkIfCellHasNoValue(row, col)) {
+				if (sudokuPuzzle.checkIfCellIsEmpty(row, col)) {
 					for (int value = 1; value <= 9; value++) {
-						if (checkConstraints(row, col, value)) {
+						if (this.checkConstraints(row, col, value)) {
 							sudokuPuzzle.setSudokuPuzzleCell(row, col, value);
 							if (solveSudokuBoard()) {
 								return true;
