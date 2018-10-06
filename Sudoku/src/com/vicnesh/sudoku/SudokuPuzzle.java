@@ -53,9 +53,17 @@ public class SudokuPuzzle {
 		return this.sudokuPuzzle;
 	}
 	
+	public int getSudokuPuzzleRowCol(int row, int col) {
+		return this.sudokuPuzzle[row][col];
+	}
+	
+	
+	public void setSudokuPuzzleCell(int row, int col, int value) {
+		this.sudokuPuzzle[row][col] = value;
+	}
 	
 	//find for cell with 0 value
-	private boolean checkIfCellHasNoValue(int row, int col) {
+	public boolean checkIfCellHasNoValue(int row, int col) {
 		if (sudokuPuzzle[row][col] == 0) {
 			return true;
 		}
@@ -78,7 +86,6 @@ public class SudokuPuzzle {
 			for (int col = 0; col != this.sudokuPuzzle.length; col++) {
 				this.currentRow = 0;
 				this.currentCol = 0;
-				generatePuzzleCellValue(row,col);
 			}
 		}
 	}

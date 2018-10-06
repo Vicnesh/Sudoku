@@ -42,8 +42,9 @@ public class Sudoku extends JFrame {
 		Container cp = getContentPane();	
 		cp.setLayout(new GridLayout(GRID_SIZE, GRID_SIZE));
 		
-		SudokuPuzzle sp = new SudokuPuzzle();
-		int[][] puzzle = sp.getSudokuPuzzle();
+		//SudokuPuzzle sp = new SudokuPuzzle();
+		SudokuBackTracking sudokuBacktrack = new SudokuBackTracking();
+		int[][] puzzle = sudokuBacktrack.getSudokuPuzzle();
 		
 		//create cells within the grid
 		for (int row = 0; row < GRID_SIZE; row++) {
